@@ -1,0 +1,21 @@
+
+/*
+There is already an userstyle for Stylish that does this.
+
+It can be found here:
+<http://userstyles.org/styles/80904/hide-horizontal-scrollbar>
+
+Unfortunately, it doesn't always work. It may be due to a bug
+in Firefox. Sometimes you have to refresh pages for it to work,
+which is annoying.
+
+This one works. Period.
+*/
+
+
+scrollbar[orient="horizontal"] > slider,
+scrollbar[orient="horizontal"] > slider > thumb,
+scrollbar[orient="horizontal"] > scrollbarbutton {
+    display: none;
+}
+
