@@ -6,6 +6,7 @@ questions, small experiments to test ideas or interesting code from other
 projects that may be useful on its own, yet small enough not to warrant the
 need for an additional repository.
 
+* [A Hy-only workaround for Werkzeug restarts](https://github.com/Beluki/Misc/tree/master/Source/Hy-Werkzeug-Restarts)
 * [Racket autocompletion for Vim](https://github.com/Beluki/Misc/tree/master/Source/Racket-Vim-AutoComplete)
 * [Hiding the Firefox horizontal scrollbar with Stylish](https://github.com/Beluki/Misc/tree/master/Source/Stylish-Hide-Horizontal-Scrollbar)
 * [A threadpool example with sorted, immediate feedback](https://github.com/Beluki/Misc/tree/master/Source/ThreadPool)
