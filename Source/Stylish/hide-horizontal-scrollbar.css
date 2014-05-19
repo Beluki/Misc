@@ -1,0 +1,10 @@
+
+/*
+Hide the horizontal scrollbar on all pages.
+*/
+
+
+html {
+    overflow-x: hidden;
+}
+

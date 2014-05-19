@@ -1,0 +1,26 @@
+
+/*
+Disable the tabs fog and make non-selected tabs text and the new tab button white.
+
+Original source code at:
+<http://userstyles.org/styles/93827/australis-tab-defogger>
+*/
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+#TabsToolbar:not(:-moz-lwtheme)::after {
+    box-shadow: none !important;
+}
+
+#TabsToolbar tab[selected="true"] {
+    color: black !important;
+}
+
+#TabsToolbar tab {
+    color: white !important;
+}
+
+#main-window .tabs-newtab-button {
+    list-style-image: url("chrome://browser/skin/tabbrowser/newtab-inverted.png") !important;
+}
+
