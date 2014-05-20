@@ -4,7 +4,7 @@ Hide the horizontal scrollbar on all pages.
 */
 
 
-html {
+body {
     overflow-x: hidden;
 }
 
