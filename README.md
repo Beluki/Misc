@@ -1,5 +1,5 @@
 
-### About
+## About
 
 This repository contains programs written as answers to Stack Overflow or IRC
 questions, small experiments to test ideas or interesting code from other
@@ -11,7 +11,7 @@ need for an additional repository.
 * [Some Stylish customizations for Firefox 29+](https://github.com/Beluki/Misc/tree/master/Source/Stylish)
 * [A threadpool example with sorted, immediate feedback](https://github.com/Beluki/Misc/tree/master/Source/ThreadPool)
 
-### License
+## License
 
 Like all my hobby projects, this is Free Software. See the [Documentation][]
 folder for more information. No warranty though.
