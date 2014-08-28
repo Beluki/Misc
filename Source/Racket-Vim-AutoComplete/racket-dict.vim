@@ -1,10 +1,12 @@
 #%app
 #%datum
+#%declare
 #%expression
 #%module-begin
 #%plain-app
 #%plain-lambda
 #%plain-module-begin
+#%printing-module-begin
 #%provide
 #%require
 #%stratified-body
@@ -92,6 +94,7 @@ bytes-convert-end
 bytes-converter?
 bytes-copy
 bytes-copy!
+bytes-environment-variable-name?
 bytes-fill!
 bytes-length
 bytes-open-converter
@@ -124,6 +127,7 @@ call-with-composable-continuation
 call-with-continuation-barrier
 call-with-continuation-prompt
 call-with-current-continuation
+call-with-default-reading-parameterization
 call-with-escape-continuation
 call-with-exception-handler
 call-with-immediate-continuation-mark
@@ -163,6 +167,7 @@ channel-put-evt?
 channel-try-get
 channel?
 chaperone-box
+chaperone-channel
 chaperone-continuation-mark-key
 chaperone-evt
 chaperone-hash
@@ -247,7 +252,9 @@ current-compiled-file-roots
 current-continuation-marks
 current-custodian
 current-directory
+current-directory-for-user
 current-drive
+current-environment-variables
 current-error-port
 current-eval
 current-evt-pseudo-random-generator
@@ -256,6 +263,7 @@ current-get-interaction-input-port
 current-inexact-milliseconds
 current-input-port
 current-inspector
+current-library-collection-links
 current-library-collection-paths
 current-load
 current-load-extension
@@ -268,9 +276,11 @@ current-milliseconds
 current-module-declare-name
 current-module-declare-source
 current-module-name-resolver
+current-module-path-for-load
 current-namespace
 current-output-port
 current-parameterization
+current-plumber
 current-preserved-thread-cell-values
 current-print
 current-process-milliseconds
@@ -343,6 +353,11 @@ dynamic-require
 dynamic-require-for-syntax
 dynamic-wind
 else
+environment-variables-copy
+environment-variables-names
+environment-variables-ref
+environment-variables-set!
+environment-variables?
 eof
 eof-object?
 ephemeron-value
@@ -408,6 +423,9 @@ exn:fail:filesystem:errno-errno
 exn:fail:filesystem:errno?
 exn:fail:filesystem:exists
 exn:fail:filesystem:exists?
+exn:fail:filesystem:missing-module
+exn:fail:filesystem:missing-module-path
+exn:fail:filesystem:missing-module?
 exn:fail:filesystem:version
 exn:fail:filesystem:version?
 exn:fail:filesystem?
@@ -427,6 +445,9 @@ exn:fail:read:non-char?
 exn:fail:read?
 exn:fail:syntax
 exn:fail:syntax-exprs
+exn:fail:syntax:missing-module
+exn:fail:syntax:missing-module-path
+exn:fail:syntax:missing-module?
 exn:fail:syntax:unbound
 exn:fail:syntax:unbound?
 exn:fail:syntax?
@@ -435,6 +456,8 @@ exn:fail:unsupported?
 exn:fail:user
 exn:fail:user?
 exn:fail?
+exn:missing-module-accessor
+exn:missing-module?
 exn:srclocs-accessor
 exn:srclocs?
 exn?
@@ -446,6 +469,7 @@ expand-syntax-once
 expand-syntax-to-top-form
 expand-to-top-form
 expand-user-path
+explode-path
 expt
 file
 file-exists?
@@ -458,9 +482,13 @@ file-size
 file-stream-buffer-mode
 file-stream-port?
 file-truncate
+filesystem-change-evt
+filesystem-change-evt-cancel
+filesystem-change-evt?
 filesystem-root-list
 filter
 find-executable-path
+find-library-collection-links
 find-library-collection-paths
 find-system-path
 findf
@@ -526,8 +554,12 @@ handle-evt
 handle-evt?
 hash
 hash->list
+hash-clear
+hash-clear!
 hash-copy
+hash-copy-clear
 hash-count
+hash-empty?
 hash-eq?
 hash-equal?
 hash-eqv?
@@ -556,6 +588,7 @@ hash?
 hasheq
 hasheqv
 identifier-binding
+identifier-binding-symbol
 identifier-label-binding
 identifier-prune-lexical-context
 identifier-prune-to-source-module
@@ -567,6 +600,7 @@ if
 imag-part
 immutable?
 impersonate-box
+impersonate-channel
 impersonate-continuation-mark-key
 impersonate-hash
 impersonate-procedure
@@ -691,6 +725,7 @@ make-derived-parameter
 make-directory
 make-do-sequence
 make-empty-namespace
+make-environment-variables
 make-ephemeron
 make-exn
 make-exn:break
@@ -706,6 +741,7 @@ make-exn:fail:contract:variable
 make-exn:fail:filesystem
 make-exn:fail:filesystem:errno
 make-exn:fail:filesystem:exists
+make-exn:fail:filesystem:missing-module
 make-exn:fail:filesystem:version
 make-exn:fail:network
 make-exn:fail:network:errno
@@ -714,6 +750,7 @@ make-exn:fail:read
 make-exn:fail:read:eof
 make-exn:fail:read:non-char
 make-exn:fail:syntax
+make-exn:fail:syntax:missing-module
 make-exn:fail:syntax:unbound
 make-exn:fail:unsupported
 make-exn:fail:user
@@ -739,6 +776,7 @@ make-parameter
 make-phantom-bytes
 make-pipe
 make-placeholder
+make-plumber
 make-polar
 make-prefab-struct
 make-pseudo-random-generator
@@ -867,6 +905,7 @@ path-for-some-system?
 path-list-string->path-list
 path-replace-suffix
 path-string?
+path<?
 path?
 peek-byte
 peek-byte-or-special
@@ -885,6 +924,11 @@ placeholder-get
 placeholder-set!
 placeholder?
 planet
+plumber-add-flush!
+plumber-flush-all
+plumber-flush-handle-remove!
+plumber-flush-handle?
+plumber?
 poll-guard-evt
 port-closed-evt
 port-closed?
@@ -949,6 +993,7 @@ prop:custom-print-quotable
 prop:custom-write
 prop:equal+hash
 prop:evt
+prop:exn:missing-module
 prop:exn:srclocs
 prop:impersonator-of
 prop:input-port
@@ -1107,6 +1152,7 @@ special-comment?
 split-path
 sqrt
 srcloc
+srcloc->string
 srcloc-column
 srcloc-line
 srcloc-position
@@ -1137,6 +1183,7 @@ string-ci>?
 string-copy
 string-copy!
 string-downcase
+string-environment-variable-name?
 string-fill!
 string-foldcase
 string-length
@@ -1152,6 +1199,7 @@ string-normalize-nfc
 string-normalize-nfd
 string-normalize-nfkc
 string-normalize-nfkd
+string-port?
 string-ref
 string-set!
 string-titlecase
@@ -1196,6 +1244,7 @@ struct:exn:fail:contract:variable
 struct:exn:fail:filesystem
 struct:exn:fail:filesystem:errno
 struct:exn:fail:filesystem:exists
+struct:exn:fail:filesystem:missing-module
 struct:exn:fail:filesystem:version
 struct:exn:fail:network
 struct:exn:fail:network:errno
@@ -1204,6 +1253,7 @@ struct:exn:fail:read
 struct:exn:fail:read:eof
 struct:exn:fail:read:non-char
 struct:exn:fail:syntax
+struct:exn:fail:syntax:missing-module
 struct:exn:fail:syntax:unbound
 struct:exn:fail:unsupported
 struct:exn:fail:user
@@ -1223,6 +1273,7 @@ substring
 symbol->string
 symbol-interned?
 symbol-unreadable?
+symbol<?
 symbol?
 sync
 sync/enable-break
