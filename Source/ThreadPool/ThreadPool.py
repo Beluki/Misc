@@ -121,7 +121,7 @@ def main():
     pool = ThreadPool(cpus)
 
     tasks = [FibTask(n) for n in range(1, 33)]
-    tasks += reversed(tasks)
+    tasks += [FibTask(n) for n in reversed(range(1, 33))]
 
     pool.start(tasks)
 
