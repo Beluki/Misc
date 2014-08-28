@@ -7,6 +7,7 @@ Threads, immediate feedback and KeyboardInterrupt.
 """
 
 
+import queue
 import time
 
 from multiprocessing import cpu_count
@@ -24,7 +25,7 @@ class Worker(Thread):
     """
 
     def __init__(self, todo, done):
-        Thread.__init__(self)
+        super().__init__()
         self.todo = todo
         self.done = done
         self.daemon = True
@@ -93,7 +94,7 @@ class ThreadPool(object):
                 break
 
             # give tasks processor time:
-            except:
+            except queue.Empty:
                 time.sleep(0.1)
 
     def poll_completed_tasks(self):
@@ -119,17 +120,20 @@ def main():
     cpus = cpu_count()
     pool = ThreadPool(cpus)
 
-    tasks = [FibTask(n) for n in range(1, 30)]
+    tasks = [FibTask(n) for n in range(1, 33)]
+    tasks += reversed(tasks)
+
     pool.start(tasks)
 
-    try:
-        for task in pool.poll_completed_tasks():
-            print('fib(%s): %s' % (task.number, task.result))
-
-    except KeyboardInterrupt:
-        pass
+    # should print the results in order
+    # first from 1 to 32, then from 32 to 1:
+    for task in pool.poll_completed_tasks():
+        print('fib(%s): %s' % (task.number, task.result), flush = True)
 
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        pass
 
