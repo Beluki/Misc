@@ -128,7 +128,7 @@ def main():
     # should print the results in order
     # first from 1 to 32, then from 32 to 1:
     for task in pool.poll_completed_tasks():
-        print('fib(%s): %s' % (task.number, task.result), flush = True)
+        print('fib({0.number}): {0.result}'.format(task), flush = True)
 
 
 if __name__ == '__main__':
