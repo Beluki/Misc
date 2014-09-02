@@ -2,6 +2,9 @@
 
 (import [flask [Flask]])
 
+;; See issues:
+;; <https://github.com/hylang/hy/issues/329>
+;; <https://github.com/hylang/hy/issues/459>
 
 ;; Change the interpreter executable.
 ;; Werkzeug will now run Hy instead of Python on restarts.
