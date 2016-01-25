@@ -6,6 +6,7 @@ questions, small experiments to test ideas or interesting code from other
 projects that may be useful on its own, yet small enough not to warrant the
 need for an additional repository.
 
+* [Scripts to backup/clone my Github repositories](https://github.com/Beluki/Misc/tree/master/Source/Github-Scripts)
 * [A Hy-only workaround for Werkzeug restarts](https://github.com/Beluki/Misc/tree/master/Source/Hy-Werkzeug-Restarts)
 * [Racket autocompletion for Vim](https://github.com/Beluki/Misc/tree/master/Source/Racket-Vim-AutoComplete)
 * [Some Stylish customizations for Firefox 29+](https://github.com/Beluki/Misc/tree/master/Source/Stylish)
