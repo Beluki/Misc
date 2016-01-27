@@ -32,6 +32,7 @@ FILEPATH="Backup Workspace - $(date "+%Y.%m.%d - %H.%M.%S")".7z
 
 # Show the last available backups, sorted by date:
 
+echo
 echo -e "\e[1mAvailable backups:\e[0m"
 ls -tr "$FOLDER" | tail
 

@@ -28,7 +28,7 @@ clone() {
     for branch in $branches; do
         total_branches=$((total_branches + 1))
         echo -e "\e[1m$total_branches - $repo ($branch)...\e[0m"
-        /usr/bin/git clone -b $branch https://github.com/Beluki/$repo.git "$repo ($branch)"
+        git clone -b $branch https://github.com/Beluki/$repo.git "$repo ($branch)"
         echo
     done
 
