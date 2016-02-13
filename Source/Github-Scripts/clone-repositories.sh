@@ -47,6 +47,7 @@ clone beluki.github.io master source
 clone dir master
 clone EmbedDIBits master
 clone Frozen-Blog master gh-pages
+clone Hubzip master
 clone GaGa master
 clone HexPaste master
 clone License master
